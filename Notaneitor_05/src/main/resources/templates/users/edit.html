@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="fragments/head :: head"/>
+<body>
+	<header th:replace="fragments/header :: header" />
+	<div class="container">
+		<h2>Editar Nota</h2>
+		<form class="form-horizontal" method="post"
+			th:action="${'/user/edit/' + user.id}">
+			
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-primary">Modificar</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	<footer class="footer" th:replace="fragments/footer :: footer"/> 
+</body>
+</html>

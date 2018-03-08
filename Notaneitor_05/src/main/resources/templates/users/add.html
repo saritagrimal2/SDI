@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="fragments/head :: head"/>
+<body>
+	<header th:replace="fragments/header :: header"/>
+	<div class="container">
+		<h2>Agregar usuario</h2>
+		<form class="form-horizontal" method="post" action="/user/add"
+			th:object="${user}">
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="dni">DNI:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="dni"
+						placeholder="99999999Y" required="true" /> <span
+						th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}">Username
+						Error</span>
+				</div>
+			</div>
+			<!-- Explicar los de th:field cuando se retorna un error -->
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="name">Nombre:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="name"
+						placeholder="Ejemplo: Juan" th:field="*{name}" required="true" /> <span
+						th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Username
+						Error</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="lastName">Apellidos:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="lastName"
+						placeholder="Ejemplo: Peréz Almonte" th:field="*{lastName}" required="true" /> <span
+						th:if="${#fields.hasErrors('lastName')}" th:errors="*{LastName}">Username
+						Error</span>
+				</div>
+			</div>
+
+			<div class="form-group" th:classappend="${#fields.hasErrors('username') ? 'has-error': ''}" >
+				<label class="control-label col-sm-2" for="username">Nombre
+					Usuario:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="username"
+						placeholder="Ejemplo: profSDI" th:field="*{username}"/> 
+					<span th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</span>
+				</div>
+			</div>
+
+			<div class="form-group" th:classappend="${#fields.hasErrors('password') ? 'has-error': ''}">
+				<label class="control-label col-sm-2" for="password">Password:</label>
+				<div class="col-sm-10">
+					<input type="password" class="form-control" name="password"
+						placeholder="Entre el Password" th:field="*{password}" /> 
+					<span th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password
+						Error</span>
+				</div>
+			</div>
+
+			<div class="form-group" th:classappend="${#fields.hasErrors('passwordConfirm') ? 'has-error': ''}">
+				<label class="control-label col-sm-2" for="passwordConfirm">Repita
+					el Password:</label>
+				<div class="col-sm-10">
+					<input type="password" class="form-control" name="passwordConfirm"
+						placeholder="Repita el Password" th:field="*{passwordConfirm}" />
+
+					<span th:if="${#fields.hasErrors('passwordConfirm')}"
+						th:errors="*{passwordConfirm}">Password repeat Error</span>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="uoId">UO:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="uoId"
+						placeholder="Ejemplo: UO888888" th:field="*{uoId}" required="true" />
+				</div>
+			</div>
+					
+			<div class="form-group">
+				<label class="control-label col-sm-2" for=role">Role:</label>
+				<div class="col-sm-10" th:if="${roleList != null and not #lists.isEmpty(roleList)}">
+						<select id="role" class="form-control" name="role">
+	           					 ><!-- Ahora se accedo a una lista de ojetos en lugar de un hashmap -->
+	           					 <option th:each="role : ${roleList}" 
+	                   				th:value="${role.id}"
+	                  		  		th:text="${role.name}">
+	                  		  	</option>
+	            		</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-primary">Enviar</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	<footer class="footer" th:replace="fragments/footer :: footer"/>
+</body>
+</html>

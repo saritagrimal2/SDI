@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="fragments/head :: head"/>
+<body>
+
+	<header th:replace="fragments/header :: header" />
+	<div class="container">
+		<h2>Detalles de la nota</h2>
+		<div class="panel panel-default">
+			<div class="panel-heading">Descripción</div>
+			<div class="panel-body" th:text="${mark.description}">
+				Ejemplo de Nota</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">Puntuación</div>
+			<div class="panel-body" th:text="${mark.score}">100</div>
+		</div>
+		
+		<div class="panel panel-default">
+			<div class="panel-heading">Alumno</div>
+			<div class="panel-body" th:text="${mark.user.uoId} + ' - ' + ${mark.user.name}  +  ' ' + ${mark.user.lastName}">datos del alumno</div>
+		</div>
+		
+		
+	</div>
+
+	<footer class="footer" th:replace="fragments/footer :: footer"/> 
+</body>
+</html>
