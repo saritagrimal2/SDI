@@ -54,7 +54,7 @@ public class NotaneitorTests {
 
 	// En Windows (Debe ser la versi�n 46.0 y desactivar las actualizacioens
 	// autom�ticas)):
-	static String PathFirefox = "C:\\Users\\UO251782\\Desktop\\Firefox46.win\\FirefoxPortable.exe";
+	static String PathFirefox = "C:\\Users\\Usuario\\Desktop\\Firefox46.win\\FirefoxPortable.exe";
 	// En MACOSX (Debe ser la versi�n 46.0 y desactivar las actualizaciones
 	// autom�ticas):
 	// static String PathFirefox =
@@ -91,7 +91,7 @@ public class NotaneitorTests {
 				PO_Properties.getENGLISH());
 		SeleniumUtils.esperarSegundos(driver, 2);
 	}
-
+	//PR05. Prueba del formulario de registro. registro con datos correctos 
 	@Test
 	public void PR05() {
 		// Vamos al formulario de registro
@@ -101,7 +101,7 @@ public class NotaneitorTests {
 		// Comprobamos que entramos en la secci�n privada
 		PO_View.checkElement(driver, "text", "Notas del usuario");
 	}
-
+	//PR06. Prueba del formulario de registro. DNI repetido en la BD, Nombre corto, .... pagination pagination-centered, Error.signup.dni.length 
 	@Test
 	public void PR06() {
 		// Vamos al formulario de registro
@@ -118,7 +118,7 @@ public class NotaneitorTests {
 		// Rellenamos el formulario.
 		PO_RegisterView.fillForm(driver, "99999990B", "Josefo", "Per", "77777", "77777");
 	}
-
+	//PRN. Loguearse con exito desde el ROl de Usuario, 99999990D, 123456 
 	@Test
 	public void PR07() {
 		// Vamos al formulario de logueo.
