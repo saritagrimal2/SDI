@@ -1,0 +1,51 @@
+<div id="widget-agregar">
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="agregar-nombre">Nombre:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="agregar-nombre"
+                   placeholder="Nombre de mi canción" id="agregar-nombre"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="agregar-genero">Genero:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="agregar-genero"
+                   placeholder="Nombre de mi canción" id="agregar-genero"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="agregar-precio">Precio (€):</label>
+        <div class="col-sm-10">
+            <input type="number" step="0.01" class="form-control" name="detalles-precio"
+                   placeholder="2.50" id="agregar-precio"/>
+        </div>
+    </div>
+    <div class="col-sm-offset-2 col-sm-10">
+        <button type="button" class="btn btn-primary" id="boton-agregar"
+                onclick="agregarCancion()">Agregar
+        </button>
+    </div>
+</div>
+<script>
+    function agregarCancion() {
+        $.ajax({
+            url: URLbase + "/cancion",
+            type: "POST",
+            data: {
+                nombre: $("#agregar-nombre").val(),
+                genero: $("#agregar-genero").val(),
+                precio: $("#agregar-precio").val()
+            },
+            dataType: 'json',
+            headers: {"token": token},
+            success: function (respuesta) {
+                console.log(respuesta); // <-- Prueba
+                $("#contenedor-principal").load("widget-canciones.html");
+
+            },
+            error: function (error) {
+                $("#contenedor-principal").load("widget-login.html");
+            }
+        });
+    }
+</script>
