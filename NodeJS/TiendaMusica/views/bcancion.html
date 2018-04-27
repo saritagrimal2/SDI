@@ -14,7 +14,7 @@
             <p>{{ cancion.genero }}</p>
             <a class="btn btn-primary pull-right"
                href="/cancion/comprar/{{ cancion._id.toString() }}">{{
-                cancion.precio }} €</a>
+                cancion.precio }} € - {{ cancion.usd }} $</a>
             <!-- Cambiar el precio por "reproducir" si ya está comprada -->
         </div>
     </div>
