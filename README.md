@@ -1,2 +1,2 @@
 # SDI
-Sistemas distribuidos e internet
+Distributed systems and internet
